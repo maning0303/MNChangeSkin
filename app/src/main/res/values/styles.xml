@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SwitchButtonStyle">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="SwitchButtonStyleMD" parent="SwitchButtonMD">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <!--白天主题-->
+    <style name="DayTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowIsTranslucent">true</item>
+
+        <!--<item name="colorValue">#FF00FF00</item>
+        <item name="floatValue">0.35</item>
+        <item name="integerValue">33</item>
+        <item name="booleanValue">true</item>
+        <item name="dimensionValue">76dp</item>
+        &lt;!&ndash; 如果string类型不是填的引用而是直接放一个字符串,在布局文件中使用正常,但代码里获取的就有问题 &ndash;&gt;
+        <item name="stringValue">@string/hello_world</item>
+        <item name="referenceValue">@drawable/ic_launcher</item>-->
+
+        <!--测试-->
+        <item name="app_background">@color/backgroundColor</item>
+        <item name="main_pic">@drawable/nanzhuang</item>
+        <item name="main_text">@color/textColor</item>
+        <item name="btn_text">@color/btnColor</item>
+        <item name="btn_background">@drawable/btn_round</item>
+        <item name="lineColor">@color/lineColor</item>
+        <item name="item_bg">@color/item_bg</item>
+    </style>
+
+    <!--黑夜主题-->
+    <style name="NightTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowIsTranslucent">true</item>
+
+        <!--测试-->
+        <item name="app_background">@color/backgroundColor_night</item>
+        <item name="main_pic">@drawable/nanzhuang_night</item>
+        <item name="main_text">@color/textColor_night</item>
+        <item name="btn_text">@color/btnColor_night</item>
+        <item name="btn_background">@drawable/btn_round_night</item>
+        <item name="lineColor">@color/lineColor_night</item>
+        <item name="item_bg">@color/item_night</item>
+    </style>
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+
+    <!--白天-->
+    <color name="backgroundColor">#fafafa</color>
+    <color name="textColor">#3b3b3b</color>
+    <color name="btnColor">#fdfdfd</color>
+    <color name="lineColor">#cccccc</color>
+    <color name="item_bg">#ffffff</color>
+    <color name="kswThumbColor">#ffffff</color>
+    <color name="kswBackColor">#bebebe</color>
+
+    <!--夜间-->
+    <color name="backgroundColor_night">#232736</color>
+    <color name="textColor_night">#626f9b</color>
+    <color name="btnColor_night">#232736</color>
+    <color name="lineColor_night">#5a6285</color>
+    <color name="item_night">#2A2F41</color>
+    <color name="kswThumbColor_night">#232736</color>
+    <color name="kswBackColor_night">#5a6285</color>
+</resources>

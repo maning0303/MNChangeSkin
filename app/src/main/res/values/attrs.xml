@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="app_background" format="reference|color" />
+    <attr name="app_backgroundGray" format="reference|color" />
+    <attr name="main_pic" format="reference|color" />
+    <attr name="main_text" format="reference|color" />
+    <attr name="btn_text" format="reference|color" />
+    <attr name="btn_background" format="reference" />
+    <attr name="lineColor" format="reference" />
+    <attr name="item_bg" format="reference|color" />
+
+</resources>
