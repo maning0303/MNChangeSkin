@@ -29,6 +29,11 @@ public class SkinManager {
     private static final IntentFilter intentFilter = new IntentFilter(IntentActionSkin);
     private static final Intent intent = new Intent(IntentActionSkin);
 
+    /**
+     * 注册广播，主要防止设置界面太深，而之前的页面改不了，更换主题必须重启Activity才能有效果
+     * @param activity
+     * @param skinBroadcastReceiver
+     */
     public static void registerSkinReceiver(Activity activity, SkinBroadcastReceiver skinBroadcastReceiver) {
         if (skinBroadcastReceiver != null) {
             activity.registerReceiver(skinBroadcastReceiver, intentFilter);
@@ -41,7 +46,11 @@ public class SkinManager {
         }
     }
 
-
+    /**
+     * 获取当前主题的Type
+     * @param context
+     * @return  0：白天主题；1：夜间主题
+     */
     public static int getCurrentSkinType(Context context) {
         return getSharePreSkin(context, THEME_DAY);
     }
@@ -50,6 +59,11 @@ public class SkinManager {
         saveSharePreSkin(context, theme);
     }
 
+    /**
+     * 获取当前主题
+     * @param context
+     * @return
+     */
     public static int getCurrentSkinTheme(Context context) {
         int saveSkinType = getCurrentSkinType(context);
         int currentTheme;
@@ -90,6 +104,7 @@ public class SkinManager {
         //重新加载
         activity.recreate();
     }
+
 
     public static void onActivityCreateSetSkin(Activity activity) {
         int currentSkinTheme = getCurrentSkinTheme(activity.getApplicationContext());
