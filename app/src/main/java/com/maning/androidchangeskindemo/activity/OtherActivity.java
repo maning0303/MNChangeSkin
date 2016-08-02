@@ -30,7 +30,8 @@ public class OtherActivity extends BaseActivity {
         skinBroadcastReceiver = new SkinBroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.i("onReceive", "OtherActivity广播来了");
+                int currentTheme = intent.getIntExtra(SkinManager.IntentExtra_SkinTheme, 0);
+                Log.i("onReceive", "OtherActivity广播来了" + currentTheme);
                 recreate();
             }
         };

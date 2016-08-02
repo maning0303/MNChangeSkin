@@ -24,7 +24,7 @@ public class SkinManager {
     private static String SkinKey = "SkinKey";
     private static SharedPreferences sp;
 
-    private static final String IntentExtra_SkinTheme = "IntentExtra_SkinTheme";
+    public static final String IntentExtra_SkinTheme = "IntentExtra_SkinTheme";
     private static final String IntentActionSkin = "com.change_skin.action";
     private static final IntentFilter intentFilter = new IntentFilter(IntentActionSkin);
     private static final Intent intent = new Intent(IntentActionSkin);
@@ -98,11 +98,9 @@ public class SkinManager {
                 currentTheme = R.style.NightTheme;
                 break;
         }
-        //发送广
-        activity.sendBroadcast(intent);
+        //发送广播
         intent.putExtra(IntentExtra_SkinTheme, currentTheme);
-        //重新加载
-//        activity.recreate();
+        activity.sendBroadcast(intent);
     }
 
 
