@@ -113,7 +113,7 @@ public class SkinManager {
         if (sp == null) {
             sp = context.getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
         }
-        sp.edit().putInt(SkinKey, value).commit();
+        sp.edit().putInt(SkinKey, value).apply();
     }
 
     private static int getSharePreSkin(Context context, int defValue) {
