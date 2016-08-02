@@ -69,6 +69,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 } else {
                     SkinManager.changeSkin(MainActivity.this, SkinManager.THEME_DAY);
                 }
+                startActivity(new Intent(this.getApplicationContext(),MainActivity.class));
+                this.finish();
+                overridePendingTransition(R.anim.activity_enter,R.anim.activity_exit);
                 break;
 
         }

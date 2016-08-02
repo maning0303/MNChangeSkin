@@ -1,5 +1,7 @@
 package com.maning.androidchangeskindemo.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,11 +17,14 @@ public class SettingActivity extends BaseActivity {
 
     private static final String TAG = "SettingActivity";
     private SwitchButton btn_checked;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        context = this;
 
         btn_checked = (SwitchButton) findViewById(R.id.btn_checked);
 
@@ -48,8 +53,19 @@ public class SettingActivity extends BaseActivity {
                     btn_checked.setBackColorRes(R.color.kswBackColor);
                     btn_checked.setThumbColorRes(R.color.kswThumbColor);
                 }
+                //重新启动
+                change();
             }
         });
 
     }
+
+
+    public void change(){
+        Log.i(TAG, "change");
+        startActivity(new Intent(context.getApplicationContext(),SettingActivity.class));
+        this.finish();
+        overridePendingTransition(R.anim.activity_enter,R.anim.activity_exit);
+    }
+
 }

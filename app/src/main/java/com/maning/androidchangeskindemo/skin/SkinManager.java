@@ -102,7 +102,7 @@ public class SkinManager {
         activity.sendBroadcast(intent);
         intent.putExtra(IntentExtra_SkinTheme, currentTheme);
         //重新加载
-        activity.recreate();
+//        activity.recreate();
     }
 
 
