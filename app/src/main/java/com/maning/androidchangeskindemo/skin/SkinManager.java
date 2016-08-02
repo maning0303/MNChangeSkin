@@ -31,6 +31,7 @@ public class SkinManager {
 
     /**
      * 注册广播，主要防止设置界面太深，而之前的页面改不了，更换主题必须重启Activity才能有效果
+     *
      * @param activity
      * @param skinBroadcastReceiver
      */
@@ -48,8 +49,9 @@ public class SkinManager {
 
     /**
      * 获取当前主题的Type
+     *
      * @param context
-     * @return  0：白天主题；1：夜间主题
+     * @return 0：白天主题；1：夜间主题
      */
     public static int getCurrentSkinType(Context context) {
         return getSharePreSkin(context, THEME_DAY);
@@ -61,6 +63,7 @@ public class SkinManager {
 
     /**
      * 获取当前主题
+     *
      * @param context
      * @return
      */
@@ -86,20 +89,9 @@ public class SkinManager {
      * @param theme    两种选择
      */
     public static void changeSkin(Activity activity, int theme) {
-        int currentTheme;
-        switch (theme) {
-            default:
-            case THEME_DAY:
-                setSkinType(activity.getApplicationContext(), THEME_DAY);
-                currentTheme = R.style.DayTheme;
-                break;
-            case THEME_NIGHT:
-                setSkinType(activity.getApplicationContext(), THEME_NIGHT);
-                currentTheme = R.style.NightTheme;
-                break;
-        }
+        setSkinType(activity.getApplicationContext(), theme);
         //发送广播
-        intent.putExtra(IntentExtra_SkinTheme, currentTheme);
+        intent.putExtra(IntentExtra_SkinTheme, theme);
         activity.sendBroadcast(intent);
     }
 
