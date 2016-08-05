@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.webkit.WebView;
 
 import com.maning.androidchangeskindemo.R;
 
@@ -114,5 +115,29 @@ public class SkinManager {
         }
         return sp.getInt(SkinKey, defValue);
     }
+
+    /*--------------------WebView 夜间模式-----------------*/
+    public static void setupWebView(WebView webView, String backgroudColor, String fontColor, String urlColor) {
+        if (webView != null) {
+            webView.setBackgroundColor(0);
+            if (getCurrentSkinType(webView.getContext().getApplicationContext()) == THEME_NIGHT) {
+                String js = String.format(jsStyle, backgroudColor, fontColor, urlColor, backgroudColor);
+                webView.loadUrl(js);
+            }
+        }
+    }
+
+    private static String jsStyle = "javascript:(function(){\n" +
+            "\t\t   document.body.style.backgroundColor=\"%s\";\n" +
+            "\t\t    document.body.style.color=\"%s\";\n" +
+            "\t\t\tvar as = document.getElementsByTagName(\"a\");\n" +
+            "\t\tfor(var i=0;i<as.length;i++){\n" +
+            "\t\t\tas[i].style.color = \"%s\";\n" +
+            "\t\t}\n" +
+            "\t\tvar divs = document.getElementsByTagName(\"div\");\n" +
+            "\t\tfor(var i=0;i<divs.length;i++){\n" +
+            "\t\t\tdivs[i].style.backgroundColor = \"%s\";\n" +
+            "\t\t}\n" +
+            "\t\t})()";
 
 }

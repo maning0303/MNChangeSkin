@@ -27,6 +27,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         initView();
         initAdapter();
+        //注册夜间模式广播监听
+        registerSkinReceiver();
     }
 
     private void registerSkinReceiver() {
@@ -52,6 +54,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         listView = (ListView) findViewById(R.id.listView);
         Button btn_setting = (Button) findViewById(R.id.btn_setting);
         Button btn_change = (Button) findViewById(R.id.btn_change);
+        Button btn_webview = (Button) findViewById(R.id.btn_webview);
+        btn_webview.setOnClickListener(this);
         btn_setting.setOnClickListener(this);
         btn_change.setOnClickListener(this);
     }
@@ -59,8 +63,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_webview:
+                startActivity(new Intent(MainActivity.this, WebViewActivity.class));
+                break;
             case R.id.btn_setting:
-                registerSkinReceiver();
                 startActivity(new Intent(MainActivity.this, OtherActivity.class));
                 break;
             case R.id.btn_change:
