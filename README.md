@@ -1,11 +1,15 @@
 # AndroidChangeSkinDemo
+
         夜间模式的测试Demo，通过Theme实现(attrs.xml+styles.xml+Activity.setTheme())
 
-##实现步骤：
+## 实现步骤：
 ##### 1.自定义属性
+```java
         <attr name="app_background" format="reference|color" />
+```
 
 ##### 2.定义两种主题，一个白天，一个夜间
+```java
         <!--白天主题-->
         <style name="DayTheme" parent="@android:style/Theme.Light.NoTitleBar">
             <item name="app_background">@color/backgroundColor</item>
@@ -14,11 +18,18 @@
         <style name="NightTheme" parent="@android:style/Theme.Light.NoTitleBar">
             <item name="app_background">@color/backgroundColor_night</item>
         </style>
+```
 
 ##### 3.布局中使用：
+```java
+
         android:background="?app_background"
+        
+```
 
 #### 注意（具体的看代码）：
+```java
+
         1.最好设置一个BaseActivity,继承它：
                 public class BaseActivity extends Activity {
                         //当前Activity的主题
@@ -48,7 +59,9 @@
                 }
                 
         4.广播的作用---主要防止设置界面太深，而设置界面之前的页面改不了（更换主题必须重启Activity才能有效果），如果更改主题的按钮在首页面，就没有必要使用注册广播了。
+        
+```
 
 
-##效果展示：
+## 效果展示：
 ![](https://github.com/maning0303/AndroidChangeSkinDemo/raw/master/screenshots/001.gif)
