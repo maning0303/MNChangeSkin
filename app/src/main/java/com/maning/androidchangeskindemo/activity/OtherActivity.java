@@ -35,6 +35,7 @@ public class OtherActivity extends BaseActivity {
             @Override
             public void onChangeSkin(int currentTheme) {
                 Log.i("onChangeSkin", "OtherActivity广播来了" + currentTheme);
+                //重启Activity
                 recreate();
             }
         };
