@@ -1,6 +1,7 @@
 # AndroidChangeSkinDemo
 
-        夜间模式Demo，通过Theme实现(attrs.xml+styles.xml+Activity.setTheme())
+### Android夜间模式，通过Theme实现(attrs.xml+styles.xml+Activity.setTheme())
+[![](https://jitpack.io/v/maning0303/MNChangeSkin.svg)](https://jitpack.io/#maning0303/MNChangeSkin)
 
 ## 效果展示：
 ![](https://github.com/maning0303/AndroidChangeSkinDemo/raw/master/screenshots/001.gif)
