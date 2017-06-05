@@ -3,15 +3,11 @@ package com.maning.androidchangeskindemo.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 
-import com.kyleduo.switchbutton.ColorUtils;
 import com.kyleduo.switchbutton.SwitchButton;
 import com.maning.androidchangeskindemo.R;
-import com.maning.androidchangeskindemo.skin.SkinManager;
+import com.maning.themelibrary.SkinManager;
 
 public class SettingActivity extends BaseActivity {
 
@@ -42,30 +38,18 @@ public class SettingActivity extends BaseActivity {
         btn_checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.i(TAG, "isChecked:" + isChecked);
-                int currentSkinType = SkinManager.getCurrentSkinType(SettingActivity.this);
-                if (SkinManager.THEME_DAY == currentSkinType) {
-                    SkinManager.changeSkin(SettingActivity.this, SkinManager.THEME_NIGHT);
-                    btn_checked.setBackColorRes(R.color.kswBackColor_night);
-                    btn_checked.setThumbColorRes(R.color.kswThumbColor_night);
-                } else {
-                    SkinManager.changeSkin(SettingActivity.this, SkinManager.THEME_DAY);
-                    btn_checked.setBackColorRes(R.color.kswBackColor);
-                    btn_checked.setThumbColorRes(R.color.kswThumbColor);
-                }
-                //重新启动
-                change();
+                SkinManager.changeSkin(SettingActivity.this);
+                resetActivity();
             }
         });
 
     }
 
-
-    public void change(){
-        Log.i(TAG, "change");
-        startActivity(new Intent(context.getApplicationContext(),SettingActivity.class));
-        this.finish();
-        overridePendingTransition(R.anim.activity_enter,R.anim.activity_exit);
+    //重启当前Activity
+    private void resetActivity() {
+        startActivity(new Intent(this, SettingActivity.class));
+        overridePendingTransition(com.maning.themelibrary.R.anim.mn_theme_activity_enter, com.maning.themelibrary.R.anim.mn_theme_activity_exit);
+        finish();
     }
 
 }

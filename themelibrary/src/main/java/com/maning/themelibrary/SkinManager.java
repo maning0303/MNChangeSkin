@@ -1,4 +1,4 @@
-package com.maning.androidchangeskindemo.skin;
+package com.maning.themelibrary;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,11 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.webkit.WebView;
-
-import com.maning.androidchangeskindemo.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -21,6 +16,8 @@ import java.util.List;
 public class SkinManager {
     public final static int THEME_DAY = 0;
     public final static int THEME_NIGHT = 1;
+    public static int THEME_ID_Day;
+    public static int THEME_ID_Night;
     private static String CONFIG = "config";
     private static String SkinKey = "SkinKey";
     private static SharedPreferences sp;
@@ -62,6 +59,11 @@ public class SkinManager {
         saveSharePreSkin(context, theme);
     }
 
+    public static void setThemeID(int DayTheme, int NightTheme) {
+        THEME_ID_Day = DayTheme;
+        THEME_ID_Night = NightTheme;
+    }
+
     /**
      * 获取当前主题
      *
@@ -74,10 +76,10 @@ public class SkinManager {
         switch (saveSkinType) {
             default:
             case THEME_DAY:
-                currentTheme = R.style.DayTheme;
+                currentTheme = THEME_ID_Day;
                 break;
             case THEME_NIGHT:
-                currentTheme = R.style.NightTheme;
+                currentTheme = THEME_ID_Night;
                 break;
         }
         return currentTheme;
@@ -96,28 +98,28 @@ public class SkinManager {
         activity.sendBroadcast(intent);
     }
 
+    /**
+     * 改变主题皮肤
+     *
+     * @param activity 当前Activity
+     */
+    public static void changeSkin(Activity activity) {
+        int currentSkinType = SkinManager.getCurrentSkinType(activity.getApplicationContext());
+        if (SkinManager.THEME_DAY == currentSkinType) {
+            SkinManager.changeSkin(activity, SkinManager.THEME_NIGHT);
+        } else {
+            SkinManager.changeSkin(activity, SkinManager.THEME_DAY);
+        }
+    }
+
 
     public static void onActivityCreateSetSkin(Activity activity) {
         int currentSkinTheme = getCurrentSkinTheme(activity.getApplicationContext());
         activity.setTheme(currentSkinTheme);
     }
 
-    private static void saveSharePreSkin(Context context, int value) {
-        if (sp == null) {
-            sp = context.getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
-        }
-        sp.edit().putInt(SkinKey, value).apply();
-    }
-
-    private static int getSharePreSkin(Context context, int defValue) {
-        if (sp == null) {
-            sp = context.getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
-        }
-        return sp.getInt(SkinKey, defValue);
-    }
-
     /*--------------------WebView 夜间模式-----------------*/
-    public static void setupWebView(WebView webView, String backgroudColor, String fontColor, String urlColor) {
+    public static void setColorWebView(WebView webView, String backgroudColor, String fontColor, String urlColor) {
         if (webView != null) {
             webView.setBackgroundColor(0);
             if (getCurrentSkinType(webView.getContext().getApplicationContext()) == THEME_NIGHT) {
@@ -139,5 +141,21 @@ public class SkinManager {
             "\t\t\tdivs[i].style.backgroundColor = \"%s\";\n" +
             "\t\t}\n" +
             "\t\t})()";
+
+
+    /* 保存设置的主题类型 */
+    private static void saveSharePreSkin(Context context, int value) {
+        if (sp == null) {
+            sp = context.getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+        }
+        sp.edit().putInt(SkinKey, value).apply();
+    }
+
+    private static int getSharePreSkin(Context context, int defValue) {
+        if (sp == null) {
+            sp = context.getSharedPreferences(CONFIG, Context.MODE_PRIVATE);
+        }
+        return sp.getInt(SkinKey, defValue);
+    }
 
 }

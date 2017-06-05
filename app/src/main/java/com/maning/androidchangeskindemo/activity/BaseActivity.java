@@ -3,7 +3,7 @@ package com.maning.androidchangeskindemo.activity;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.maning.androidchangeskindemo.skin.SkinManager;
+import com.maning.themelibrary.SkinManager;
 
 /**
  * Created by maning on 16/3/28.

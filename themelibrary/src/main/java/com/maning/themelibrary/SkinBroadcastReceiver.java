@@ -1,4 +1,4 @@
-package com.maning.androidchangeskindemo.skin;
+package com.maning.themelibrary;
 
 import android.content.BroadcastReceiver;
 

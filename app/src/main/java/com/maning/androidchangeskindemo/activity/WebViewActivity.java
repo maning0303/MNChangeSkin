@@ -4,15 +4,13 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.maning.androidchangeskindemo.R;
-import com.maning.androidchangeskindemo.skin.SkinManager;
+import com.maning.themelibrary.SkinManager;
 
 public class WebViewActivity extends BaseActivity {
 
@@ -54,7 +52,7 @@ public class WebViewActivity extends BaseActivity {
                 String backgroudColor = "#232736";
                 String fontColor = "#626f9b";
                 String urlColor = "#9AACEC";
-                SkinManager.setupWebView(webView, backgroudColor, fontColor, urlColor);
+                SkinManager.setColorWebView(webView, backgroudColor, fontColor, urlColor);
             }
 
             @Override

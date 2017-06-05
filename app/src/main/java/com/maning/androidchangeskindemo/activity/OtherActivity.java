@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.maning.androidchangeskindemo.R;
-import com.maning.androidchangeskindemo.skin.SkinBroadcastReceiver;
-import com.maning.androidchangeskindemo.skin.SkinManager;
+import com.maning.themelibrary.SkinBroadcastReceiver;
+import com.maning.themelibrary.SkinManager;
 
 public class OtherActivity extends BaseActivity {
 
