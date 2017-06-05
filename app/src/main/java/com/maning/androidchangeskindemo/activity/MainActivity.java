@@ -1,6 +1,5 @@
 package com.maning.androidchangeskindemo.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,20 +28,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         initAdapter();
         //注册夜间模式广播监听
         registerSkinReceiver();
-    }
-
-    private void registerSkinReceiver() {
-        if (skinBroadcastReceiver == null) {
-            skinBroadcastReceiver = new SkinBroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    int currentTheme = intent.getIntExtra(SkinManager.IntentExtra_SkinTheme, 0);
-                    Log.i("onReceive", "MainActivity广播来了" + currentTheme);
-                    recreate();
-                }
-            };
-            SkinManager.registerSkinReceiver(MainActivity.this, skinBroadcastReceiver);
-        }
     }
 
     private void initAdapter() {
@@ -87,6 +72,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        SkinManager.unregisterSkinReceiver(this, skinBroadcastReceiver);
+        unregisterSkinReceiver();
     }
+
+    public void registerSkinReceiver() {
+        skinBroadcastReceiver = new SkinBroadcastReceiver() {
+            @Override
+            public void onChangeSkin(int currentTheme) {
+                Log.i("onChangeSkin", "MainActivity广播来了" + currentTheme);
+                recreate();
+            }
+        };
+        SkinManager.registerSkinReceiver(this, skinBroadcastReceiver);
+    }
+
+    public void unregisterSkinReceiver() {
+        if (skinBroadcastReceiver != null) {
+            SkinManager.unregisterSkinReceiver(this, skinBroadcastReceiver);
+        }
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.maning.androidchangeskindemo.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,21 +26,33 @@ public class OtherActivity extends BaseActivity {
             }
         });
 
+        registerSkinReceiver();
+
+    }
+
+    public void registerSkinReceiver() {
         skinBroadcastReceiver = new SkinBroadcastReceiver() {
             @Override
-            public void onReceive(Context context, Intent intent) {
-                int currentTheme = intent.getIntExtra(SkinManager.IntentExtra_SkinTheme, 0);
-                Log.i("onReceive", "OtherActivity广播来了" + currentTheme);
+            public void onChangeSkin(int currentTheme) {
+                Log.i("onChangeSkin", "OtherActivity广播来了" + currentTheme);
                 recreate();
             }
         };
         SkinManager.registerSkinReceiver(OtherActivity.this, skinBroadcastReceiver);
-
     }
+
+    public void unregisterSkinReceiver() {
+        if (skinBroadcastReceiver != null) {
+            SkinManager.unregisterSkinReceiver(this, skinBroadcastReceiver);
+        }
+    }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        SkinManager.unregisterSkinReceiver(this, skinBroadcastReceiver);
+        unregisterSkinReceiver();
     }
+
+
 }
