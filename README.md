@@ -4,7 +4,7 @@
 [![](https://jitpack.io/v/maning0303/MNChangeSkin.svg)](https://jitpack.io/#maning0303/MNChangeSkin)
 
 ## 效果展示：
-![](https://github.com/maning0303/AndroidChangeSkinDemo/raw/master/screenshots/001.gif)
+![](https://github.com/maning0303/MNChangeSkin/raw/master/screenshots/001.gif)
 
 ## 如何添加
 ### Gradle添加：
