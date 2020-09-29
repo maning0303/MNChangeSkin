@@ -135,6 +135,9 @@
 ### 上线项目使用:
 #### [GanKMM](https://github.com/maning0303/GankMM)
 
+### ColorMatrix 实现各种模式:
+#### [AppDress](https://github.com/lenebf/AppDress)
+
 ## 推荐:
 Name | Describe |
 --- | --- |
