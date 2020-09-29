@@ -23,7 +23,7 @@
     </style>
 
     <!--白天主题-->
-    <style name="DayTheme" parent="@android:style/Theme.Light.NoTitleBar">
+    <style name="DayTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
 
         <!--<item name="colorValue">#FF00FF00</item>
@@ -46,7 +46,7 @@
     </style>
 
     <!--黑夜主题-->
-    <style name="NightTheme" parent="@android:style/Theme.Light.NoTitleBar">
+    <style name="NightTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
 
         <!--测试-->

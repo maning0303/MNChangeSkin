@@ -35,7 +35,7 @@ public class WebViewActivity extends BaseActivity {
         webView.getSettings().setJavaScriptEnabled(true);
 
         //////////////////////////////
-        webView.loadUrl("http://www.baidu.com");
+        webView.loadUrl("https://www.baidu.com");
         //设置了默认在本应用打开，不设置会用浏览器打开的
         webView.setWebViewClient(new WebViewClient() {
             @Override
