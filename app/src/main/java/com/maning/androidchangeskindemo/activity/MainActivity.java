@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.maning.androidchangeskindemo.R;
+import com.maning.androidchangeskindemo.activity.other.ColorMatrixActivity;
 import com.maning.androidchangeskindemo.adapter.SkinAdapter;
 import com.maning.themelibrary.SkinBroadcastReceiver;
 import com.maning.themelibrary.SkinManager;
@@ -18,6 +19,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private ListView listView;
     private SkinBroadcastReceiver skinBroadcastReceiver;
+    private Button mBtnColormatrix;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         btn_webview.setOnClickListener(this);
         btn_setting.setOnClickListener(this);
         btn_change.setOnClickListener(this);
+        mBtnColormatrix = (Button) findViewById(R.id.btn_colormatrix);
+        mBtnColormatrix.setOnClickListener(this);
     }
 
     @Override
@@ -58,13 +62,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 SkinManager.changeSkin(this);
                 resetActivity();
                 break;
-
+            case R.id.btn_colormatrix:
+                startActivity(new Intent(this, ColorMatrixActivity.class));
+                break;
         }
     }
 
     //重启当前Activity
     private void resetActivity() {
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         overridePendingTransition(com.maning.themelibrary.R.anim.mn_theme_activity_enter, com.maning.themelibrary.R.anim.mn_theme_activity_exit);
         finish();
     }
